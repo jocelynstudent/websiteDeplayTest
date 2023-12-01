@@ -11,7 +11,7 @@ jobs:
     - name: 📂 Sync Files
       uses: SamKirkland/web-deploy@v1
       with:
-        target-server: example.com
-        remote-user: username
+        target-server: 167.99.227.133
+        remote-user: githubuser12
         private-ssh-key: ${{ secrets.SSH_KEY }}
         destination-path: ~/www/
