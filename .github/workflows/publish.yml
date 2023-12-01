@@ -1,8 +1,8 @@
-name: Deploy on Push
 on: push
+name: Publish Website
 jobs:
   web-deploy:
-    name: Deploy
+    name: 🚀 Deploy Website Every Commit
     runs-on: ubuntu-latest
     steps:
       - name: Get Latest Code
