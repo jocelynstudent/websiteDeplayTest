@@ -8,8 +8,13 @@ jobs:
       - uses: actions/checkout@v4
       - name: Deploy
         run: |
-          which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y  )
-
+          eval $(ssh-agent -s)
+          ssh-add <(echo "$SSH_KEY" )
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          ssh-keyscan $SERVER_IP >> ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+          scp -r * githubuser12@$SERVER_IP:~/www
     env:
       SSH_PRIVATE_KEY: ${{secrets.SSH_KEY}}
       SERVER_IP: 167.99.227.133
